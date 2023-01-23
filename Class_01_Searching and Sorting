@@ -1,1 +1,80 @@
-//Class 1 - Searching and Sorting (Meet of Two People/Object)
+/*
+ * Class 1 (Day 1) - Searching and Sorting (Meet of Two People/Object)
+ * Check If Two People, Starting at Position 1 and Position 2 respectively (Same/Different), Moving with their Respective Speed, 
+ * Will Ever Meet Each Other At a Specific Point or not.
+ * 
+ * Points To Remember :-
+ * (1) If point1 > point2 and speed1 > speed2, it is impossible for the two of them to meet.
+ * (2) If point2 > point1 and speed2 > speed1, it is impossible for the two of them to meet.
+ * (3) If Distance Between Point 1 and Point 2 is completely divisible by the Speed Difference Between the Two Persons, They Will Surely Meet.
+ */
+import java.util.*;
+public class PeopleMeetEachOther
+{
+    public static boolean MeetingOrNotOptimised(int p1, int p2, int s1, int s2)
+    {
+        if(p1>p2 && s1>s2) return false;
+        if(p2>p1 && s2>s1) return false;
+        if(p1!=p2 && s1==s2) return false;
+        if(p1==p2 && s1!=s2) return false;
+        if(p1==p2 && s1==s2) return true;
+        int DistanceBetweenBoth = Math.abs(p1-p2);
+        int SpeedDifference = Math.abs(s1-s2);
+        if(DistanceBetweenBoth % SpeedDifference == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    public static boolean MeetingOrNot(int p1, int p2, int s1, int s2)
+    {
+        if(p1>p2 && s1>s2) return false; // If Point1 > Point2 and Speed1 > Speed2 -> They Will Never Meet
+        if(p2>p1 && s2>s1) return false; // If Point2 > Point1 and Speed2 > Speed1 -> They Will Never Meet
+        if(p1!=p2 && s1==s2) return false; //Different Starting Points But Equal Speeds  -> They Will Never Meet
+        if(p1==p2 && s1!=s2) return false; //Same Starting Point But Different Speeds -> They Will Never Meet
+        if(p1==p2 && s1==s2) return true; //Same Starting Point And Same Speeds -> They Will Surely Meet
+        //Assuming p1 is greater than p2
+        if(p1>p2)
+        {
+            while(p1>=p2)
+            {
+                if(p1==p2)
+                {
+                    return true;
+                }
+                p1+=s1;
+                p2+=s2;
+            }
+        }
+        //Assuming p2 is greater than p1
+        else
+        {
+            while(p2>=p1)
+            {
+                if(p1==p2)
+                {
+                    return true;
+                }
+                p1+=s1;
+                p2+=s2;
+            }
+        }
+        return false;
+    }
+    public static void main(String[] args)
+    {
+        int point1 = 1; //Starting Point of Person A
+        int point2 = 10; //Starting Point of Person B
+        int speed1 = 2; //Speed of Person A
+        int speed2 = 1; //Speed of Person B
+        boolean ans = MeetingOrNot(point1,point2,speed1,speed2); //Brute Force Algorithm
+        if(ans==false)
+        {
+            System.out.println("They Did Not Meet");
+        }
+        else
+        {
+            System.out.println("They Met");
+        }
+    }
+}
