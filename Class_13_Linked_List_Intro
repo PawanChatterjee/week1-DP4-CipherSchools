@@ -1,0 +1,103 @@
+//Class_13_Linked_List_Intro
+/*
+ * Linked List
+ */
+import java.util.*;
+public class Linked_List
+{
+    static class Node
+    {
+        int data; //Instance Variable
+        Node next; //Instance Variable
+        public Node(int data)
+        {
+            this.data=data;
+            this.next=null;
+        }
+    }
+    public static void Print_List(Node head)
+    {
+        while(head!=null)
+        {
+            System.out.print(head.data+"->");
+            head=head.next;
+        }
+        System.out.print("NULL");
+    }
+    public static void main(String[] args)
+    {
+        Node node1=new Node(4);
+        Node node2=new Node(5);
+        Node node3=new Node(8);
+        Node node4=new Node(7);
+        Node head=node1;
+        node1.next=node2;
+        node2.next=node3;
+        node3.next=node4;
+        Print_List(head);
+    }
+}
+<-------------------------------------------------------->
+<-------------------------------------------------------->
+/*
+ * Reverse a Linked List
+ */
+import java.util.*;
+public class Reverse_Linked_List
+{
+    static class Node
+    {
+        int data; 
+        Node next;
+        public Node()
+        {
+            this.next=null;
+        }
+        public Node(int data)
+        {
+            this.data=data;
+            this.next=null;
+        }
+    }
+    public static Node reverse(Node head)
+    {
+        Node next=null;
+        Node prev=null;
+        Node current=head;
+        while(current!=null)
+        {
+            next=current.next;
+            current.next=prev;
+            prev=current;
+            current=next;
+        }
+        head=prev;
+        return head;
+    }
+    public static void main(String[] args)
+    {
+        Node head=new Node(5);
+        head.next=new Node(10);
+        head.next.next=new Node(3);
+        head.next.next.next=new Node(40);
+        System.out.println("Linked List Before Reversal :- ");
+        Node temp=head;
+        while(temp!=null)
+        {
+            System.out.print(temp.data+"->");
+            temp=temp.next;
+        }
+        System.out.print("null");
+        System.out.println();
+        System.out.println("Linked List After Reversal :- ");
+        Node new_node=reverse(head);
+        while(new_node!=null)
+        {
+            System.out.print(new_node.data+"->");
+            new_node=new_node.next;
+        }
+        System.out.print("null");
+    }
+}
+<------------------------------------------------------------------------------>
+<------------------------------------------------------------------------------>
