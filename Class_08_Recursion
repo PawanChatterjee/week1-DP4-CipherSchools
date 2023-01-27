@@ -2,7 +2,7 @@
 //Power Set
 import java .io.*;
  
-public class GFG {
+public class Power_Set{
      
     static void printPowerSet(char []set,
                             int set_size)
