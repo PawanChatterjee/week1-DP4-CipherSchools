@@ -1,6 +1,6 @@
 //Class_03_Searching_and_Sorting
 //Question - Search In A Sorted Matrix
-class GFG {
+class Search_in_Sorted {
     private static void search(int[][] mat, int n, int x)
     {
         int i = 0, j = n - 1;
